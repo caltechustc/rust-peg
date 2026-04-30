@@ -234,20 +234,37 @@
 //!
 //! Rules can be parameterized with types, lifetimes, and values, just like Rust functions.
 //!
+//! ```rust,no_run
+//! # peg::parser!{grammar doc() for str {
+//! // Value parameter
+//! rule num_radix(radix: u32) -> u32
+//!   = n:$(['0'..='9']+) {? u32::from_str_radix(n, radix).or(Err("number")) }
+//!
+//! // Type parameter
+//! rule number<T: std::str::FromStr>() -> T
+//!   = s:$(['0'..='9']+) {? s.parse().or(Err("number")) }
+//!
+//! rule literal() -> u32
+//!   = "0x" n:num_radix(16) { n }
+//!   / "0b" n:num_radix(2) { n }
+//!   / number()
+//!
+//! # }}
+//! # fn main() {}
+//! ```
+//!
+//! For a `pub rule`, the exposed function accepts the rule parameters after the input argument.
+//!
 //! In addition to Rust values, rules can also accept PEG expression fragments as arguments by using
 //! `rule<R>` as a parameter type. When calling such a rule, use `<>` around a PEG expression in the
 //! argument list to capture the expression and pass it to the rule.
 //!
-//! For example:
-//!
 //! ```rust,no_run
 //! # peg::parser!{grammar doc() for str {
-//! rule num_radix(radix: u32) -> u32
-//!   = n:$(['0'..='9']+) {? u32::from_str_radix(n, radix).or(Err("number")) }
-//!
+//! # rule expression() -> u32 = "..." { 0 }
 //! rule list<T>(x: rule<T>) -> Vec<T> = "[" v:(x() ** ",") ","? "]" {v}
 //!
-//! pub rule octal_list() -> Vec<u32> = list(<num_radix(8)>)
+//! pub rule array() -> Vec<u32> = list(<expression()>)
 //! # }}
 //! # fn main() {}
 //! ```
