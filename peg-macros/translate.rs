@@ -238,6 +238,7 @@ fn compile_inject_func(context: &Context, var: &InjectVar) -> TokenStream {
 
     quote_spanned! { span =>
         #doc
+        #[allow(unused)]
         fn #name<'input #(, #grammar_lifetime_params)*>(
             #input_param: #input_ty,
             #lpos_param: usize,
