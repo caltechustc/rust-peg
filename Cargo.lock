@@ -50,7 +50,7 @@ checksum = "945462a4b81e43c4e3ba96bd7b49d834c6f61198356aa858733bc4acf3cbe62e"
 
 [[package]]
 name = "peg"
-version = "0.8.5"
+version = "0.8.6"
 dependencies = [
  "peg-macros",
  "peg-runtime",
@@ -60,7 +60,7 @@ dependencies = [
 
 [[package]]
 name = "peg-macros"
-version = "0.8.5"
+version = "0.8.6"
 dependencies = [
  "peg-runtime",
  "proc-macro2",
@@ -69,7 +69,7 @@ dependencies = [
 
 [[package]]
 name = "peg-runtime"
-version = "0.8.5"
+version = "0.8.6"
 
 [[package]]
 name = "prettyplease"

@@ -2,7 +2,7 @@
 members = ["./peg-macros", "./peg-runtime", "xtask"]
 
 [workspace.package]
-version = "0.8.5"
+version = "0.8.6"
 authors = [ "Kevin Mehall <km@kevinmehall.net>" ]
 license = "MIT"
 repository = "https://github.com/kevinmehall/rust-peg"
@@ -10,8 +10,8 @@ edition = "2021"
 rust-version = "1.82.0" # if changed, also update .github/workflows/rust.yml
 
 [workspace.dependencies]
-peg-runtime = { path = "peg-runtime", version = "= 0.8.5" }
-peg-macros = { path = "peg-macros", version = "= 0.8.5" }
+peg-runtime = { path = "peg-runtime", version = "= 0.8.6" }
+peg-macros = { path = "peg-macros", version = "= 0.8.6" }
 
 [package]
 name = "peg"
